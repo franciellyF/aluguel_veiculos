@@ -45,3 +45,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', github: 'sferik/rails_admin'
+gem 'rails_admin_rollincode', '~> 1.0'
+gem "devise"
+

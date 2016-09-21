@@ -11,9 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160920232039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "aluguels", force: :cascade do |t|
+    t.decimal  "preco",          precision: 8, scale: 2
+    t.decimal  "decimal",        precision: 8, scale: 2
+    t.boolean  "status"
+    t.datetime "data_retirada"
+    t.datetime "data_devolucao"
+    t.integer  "carro_id"
+    t.integer  "cliente_id"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  create_table "carros", force: :cascade do |t|
+    t.string   "marca",      limit: 40
+    t.string   "tipo",       limit: 40
+    t.boolean  "disponivel"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "clientes", force: :cascade do |t|
+    t.string   "nome"
+    t.string   "documento"
+    t.string   "telefone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sinistros", force: :cascade do |t|
+    t.decimal  "preco",      precision: 8, scale: 2
+    t.decimal  "decimal",    precision: 8, scale: 2
+    t.boolean  "status"
+    t.integer  "tipo"
+    t.text     "descricao"
+    t.integer  "aluguel"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
 
 end
